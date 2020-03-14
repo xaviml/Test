@@ -1,4 +1,4 @@
 [tool.commitizen]
-name = "cz_customize"
-version = "0.0.1"
+name = "cz_conventional_commits"
+version = "0.0.2"
 tag_format = "v$minor.$major.$patch$prerelease"
