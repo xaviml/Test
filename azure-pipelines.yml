@@ -24,5 +24,3 @@ steps:
   inputs:
     gitHubConnection: github.com_xaviml
     repositoryName: xaviml/Test
-    tagSource: manual
-    tag: $(Build.BuildNumber)
