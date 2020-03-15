@@ -22,7 +22,7 @@ steps:
 - task: GithubRelease@0 
   displayName: 'Create GitHub Release'      
   inputs:
-    gitHubConnection: xaviml
+    gitHubConnection: github.com_xaviml
     repositoryName: xaviml/Test
     tagSource: manual
     tag: $(Build.BuildNumber)
