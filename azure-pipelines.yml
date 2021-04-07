@@ -27,3 +27,5 @@ steps:
     gitHubConnection: github.com_xaviml
     repositoryName: xaviml/Test
     isPreRelease: ${{ contains(variables['Build.SourceBranchName'], 'b') }}
+    releaseNotesSource: file
+    releaseNotesFile: CHANGELOG_DEV.md

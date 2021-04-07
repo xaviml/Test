@@ -1,0 +1,1 @@
+This is my CHANGELOG for version $(tagName).
