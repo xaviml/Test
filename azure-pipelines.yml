@@ -20,7 +20,7 @@ strategy:
       python.version: '3.8'
 
 steps:
-- script: sed 's/TAG_NAME/$(tagName)/g' CHANGELOG.md > CHANGELOG.md
+- script: sed 's/TAG_NAME/$(tagName)/g' CHANGELOG_DEV.md > CHANGELOG_DEV.md
   displayName: Replace CHANGELOG.md
 - task: GithubRelease@0
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
