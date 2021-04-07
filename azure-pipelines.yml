@@ -30,4 +30,4 @@ steps:
     isPreRelease: ${{ contains(variables['Build.SourceBranchName'], 'b') }}
     releaseNotesSource: file
     releaseNotesFile: CHANGELOG.md
-    title: ${{ variables['Build.SourceBranchName'] }}
+    title: $(Build.SourceBranchName)
