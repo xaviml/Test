@@ -1,1 +1,1 @@
-This is my CHANGELOG for version $(tagName).
+This is my CHANGELOG for version TAG_NAME.
