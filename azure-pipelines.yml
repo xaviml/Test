@@ -21,6 +21,12 @@ strategy:
 
 steps:
 - script: sed -i 's/TAG_NAME/${{ variables['Build.SourceBranchName'] }}/g' CHANGELOG_DEV.md
+- script: sed -i 's/PRERELEASE_NOTE/\"Note: Some links might not work or might be not updated due to being a pre-release, and documentation is not yet available\"/g' RELEASE_NOTES.md
+  displayName: Replace prerelease note in RELEASE_NOTES.md
+  condition: contains(variables['Build.SourceBranchName'], 'b')
+- script: sed -i 's/PRERELEASE_NOTE//g' RELEASE_NOTES.md
+  displayName: Replace prerelease note in RELEASE_NOTES.md
+  condition: not(contains(variables['Build.SourceBranchName'], 'b'))
 - task: GithubRelease@0
   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
   displayName: 'Create GitHub Release'      
