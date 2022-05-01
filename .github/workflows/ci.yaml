@@ -47,8 +47,8 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: 'release.zip'
-          path: apps/test
+          filename: '../../release.zip'
+          directory: apps/test
       - run: sed -i 's/VERSION_TAG/${{ github.ref_name }}/g' RELEASE_NOTES.md
       - run: "sed -i 's/PRERELEASE_NOTE/_Note: Some links might not work or might be not updated due to being a pre-release, and documentation is not yet available_/g' RELEASE_NOTES.md"
         if: contains(github.ref_name, 'b')
@@ -59,3 +59,4 @@ jobs:
           artifacts: "release.zip"
           prerelease: ${{ contains(github.ref_name, 'b') }}
           bodyFile: "RELEASE_NOTES.md"
+          generateReleaseNotes: true
