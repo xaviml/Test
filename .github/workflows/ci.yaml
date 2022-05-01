@@ -63,6 +63,8 @@ jobs:
       - run: cp CHANGELOG_DEV.template.md CHANGELOG_DEV.md
       - name: Commit report
         run: |
+          git config --global user.name 'xaviml'
+          git config --global user.email 'xaviml@users.noreply.github.com'
           git add CHANGELOG_DEV.md
           git commit -m "Upload CHANGELOG_DEV.md"
           git push origin HEAD
