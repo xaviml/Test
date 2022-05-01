@@ -31,7 +31,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          key: venv-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
@@ -68,8 +68,10 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: master
+      - run: mv CHANGELOG_DEV.md CHANGELOG_DEV.old.md
       - run: cp CHANGELOG_DEV.template.md CHANGELOG_DEV.md
       - name: Commit report
+        if: hashFiles('CHANGELOG_DEV.old.md') != hashFiles('CHANGELOG_DEV.md')
         run: |
           git config --global user.name 'xaviml'
           git config --global user.email 'xaviml@users.noreply.github.com'
@@ -77,6 +79,7 @@ jobs:
           git commit -m "Upload CHANGELOG_DEV.md"
           git push origin HEAD
       - name: Merge main -> dev
+        if: hashFiles('CHANGELOG_DEV.old.md') != hashFiles('CHANGELOG_DEV.md')
         uses: devmasx/merge-branch@master
         with:
           type: now
