@@ -27,13 +27,13 @@ steps:
 - script: sed -i 's/PRERELEASE_NOTE//g' CHANGELOG_DEV.md
   displayName: Replace prerelease note in CHANGELOG_DEV.md
   condition: not(contains(variables['Build.SourceBranchName'], 'b'))
-- task: GithubRelease@0
-  condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
-  displayName: 'Create GitHub Release'      
-  inputs:
-    gitHubConnection: github.com_xaviml
-    repositoryName: xaviml/Test
-    isPreRelease: ${{ contains(variables['Build.SourceBranchName'], 'b') }}
-    releaseNotesSource: file
-    releaseNotesFile: CHANGELOG_DEV.md
-    title: $(Build.SourceBranchName)
+# - task: GithubRelease@0
+#   condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/v')
+#   displayName: 'Create GitHub Release'      
+#   inputs:
+#     gitHubConnection: github.com_xaviml
+#     repositoryName: xaviml/Test
+#     isPreRelease: ${{ contains(variables['Build.SourceBranchName'], 'b') }}
+#     releaseNotesSource: file
+#     releaseNotesFile: CHANGELOG_DEV.md
+#     title: $(Build.SourceBranchName)

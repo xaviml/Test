@@ -56,8 +56,6 @@ jobs:
         if: "!contains(github.ref_name, 'b')"
       - uses: ncipollo/release-action@v1
         with:
-          tag: ${{ github.ref_name }}
           artifacts: "release.zip"
           prerelease: ${{ contains(github.ref_name, 'b') }}
           bodyFile: "RELEASE_NOTES.md"
-          token: ${{ secrets.GITHUB_TOKEN }}
