@@ -76,10 +76,13 @@ jobs:
           git add CHANGELOG_DEV.md
           git commit -m "Upload CHANGELOG_DEV.md"
           git push origin HEAD
-      - name: Merge main -> dev
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: main
-          target_branch: dev
-          github_token: ${{ github.token }}
+          git checkout dev
+          git merge master
+          git push origin HEAD
+      # - name: Merge main -> dev
+      #   uses: devmasx/merge-branch@master
+      #   with:
+      #     type: now
+      #     from_branch: main
+      #     target_branch: dev
+      #     github_token: ${{ github.token }}
